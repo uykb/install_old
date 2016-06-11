@@ -26,4 +26,4 @@ chmod +x shadowsocks-libev.sh
 
 配置完成后立即起效
 
-目前问题,shadowsocks-libev没有开启udp转发.参数明明带了-u  有待研究
+支持UDP转发
