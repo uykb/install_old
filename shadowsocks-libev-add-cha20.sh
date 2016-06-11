@@ -152,6 +152,10 @@ function install(){
 
 # Uninstall Shadowsocks-libev
 function uninstall_shadowsocks_libev(){
+	cd /root/supervisor
+	echo "---------------------------"
+	ls
+	echo "---------------------------"
 	 while true
     do
     echo -e "请输入端口 for shadowsocks-libev [1-65535]:"
@@ -173,10 +177,6 @@ function uninstall_shadowsocks_libev(){
         echo "输入错误！请输入正确的数字."
     fi
     done
-	cd /root/supervisor
-	echo "---------------------------"
-	ls
-	echo "---------------------------"
 	cd /root
 	rm -rf /root/supervisor/ss-${shadowsocksport}.conf
 	service supervisord restart
