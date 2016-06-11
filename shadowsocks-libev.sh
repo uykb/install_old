@@ -12,9 +12,8 @@ export PATH
 clear
 echo "#############################################################"
 echo "# Install Shadowsocks-libev server for CentOS 6 or 7        #"
-echo "# Intro: https://teddysun.com/357.html                      #"
-echo "# Author: Teddysun <i@teddysun.com>                         #"
-echo "# Thanks: @m0d8ye <https://twitter.com/m0d8ye>              #"
+echo "# shadowsocks-libev 定制版安装                              #"
+echo "# Author: wxliuxh                                           #"
 echo "#############################################################"
 echo ""
 
@@ -62,37 +61,6 @@ function pre_install(){
         echo "Not support CentOS 5, please change to CentOS 6 or 7 and try again."
         exit 1
     fi
-    #Set shadowsocks-libev config password
-    echo "Please input password for shadowsocks-libev:"
-    read -p "(Default password: teddysun.com):" shadowsockspwd
-    [ -z "$shadowsockspwd" ] && shadowsockspwd="teddysun.com"
-    echo ""
-    echo "---------------------------"
-    echo "password = $shadowsockspwd"
-    echo "---------------------------"
-    echo ""
-    #Set shadowsocks-libev config port
-    while true
-    do
-    echo -e "Please input port for shadowsocks-libev [1-65535]:"
-    read -p "(Default port: 8989):" shadowsocksport
-    [ -z "$shadowsocksport" ] && shadowsocksport="8989"
-    expr $shadowsocksport + 0 &>/dev/null
-    if [ $? -eq 0 ]; then
-        if [ $shadowsocksport -ge 1 ] && [ $shadowsocksport -le 65535 ]; then
-            echo ""
-            echo "---------------------------"
-            echo "port = $shadowsocksport"
-            echo "---------------------------"
-            echo ""
-            break
-        else
-            echo "Input error! Please input correct numbers."
-        fi
-    else
-        echo "Input error! Please input correct numbers."
-    fi
-    done
     get_char(){
         SAVEDSTTY=`stty -g`
         stty -echo
@@ -103,7 +71,7 @@ function pre_install(){
         stty $SAVEDSTTY
     }
     echo ""
-    echo "Press any key to start...or Press Ctrl+C to cancel"
+    echo "按任意键继续安装...或 按 Ctrl+C 取消安装"
     char=`get_char`
     #Install necessary dependencies
     yum install -y wget unzip openssl-devel gcc swig python python-devel python-setuptools autoconf libtool libevent
@@ -139,75 +107,14 @@ function download_files(){
         echo "Unzip shadowsocks-libev failed! Please visit https://teddysun.com/357.html and contact."
         exit 1
     fi
-    # Download start script
-    if ! wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-libev; then
-        echo "Failed to download shadowsocks-libev start script!"
-        exit 1
-    fi
-}
-
-# Config shadowsocks
-function config_shadowsocks(){
-    if [ ! -d /etc/shadowsocks-libev ];then
-        mkdir /etc/shadowsocks-libev
-    fi
-    cat > /etc/shadowsocks-libev/config.json<<-EOF
-{
-    "server":"0.0.0.0",
-    "server_port":${shadowsocksport},
-    "local_address":"127.0.0.1",
-    "local_port":1080,
-    "password":"${shadowsockspwd}",
-    "timeout":600,
-    "method":"aes-256-cfb"
-}
-EOF
-}
-
-# firewall set
-function firewall_set(){
-    echo "firewall set start..."
-    if centosversion 6; then
-        /etc/init.d/iptables status > /dev/null 2>&1
-        if [ $? -eq 0 ]; then
-            iptables -L -n | grep '${shadowsocksport}' | grep 'ACCEPT' > /dev/null 2>&1
-            if [ $? -ne 0 ]; then
-                iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport ${shadowsocksport} -j ACCEPT
-                iptables -I INPUT -m state --state NEW -m udp -p udp --dport ${shadowsocksport} -j ACCEPT
-                /etc/init.d/iptables save
-                /etc/init.d/iptables restart
-            else
-                echo "port ${shadowsocksport} has been set up."
-            fi
-        else
-            echo "WARNING: iptables looks like shutdown or not installed, please manually set it if necessary."
-        fi
-    elif centosversion 7; then
-        systemctl status firewalld > /dev/null 2>&1
-        if [ $? -eq 0 ];then
-            firewall-cmd --permanent --zone=public --add-port=${shadowsocksport}/tcp
-            firewall-cmd --permanent --zone=public --add-port=${shadowsocksport}/udp
-            firewall-cmd --reload
-        else
-            echo "Firewalld looks like not running, try to start..."
-            systemctl start firewalld
-            if [ $? -eq 0 ];then
-                firewall-cmd --permanent --zone=public --add-port=${shadowsocksport}/tcp
-                firewall-cmd --permanent --zone=public --add-port=${shadowsocksport}/udp
-                firewall-cmd --reload
-            else
-                echo "WARNING: Try to start firewalld failed. please enable port ${shadowsocksport} manually if necessary."
-            fi
-        fi
-    fi
-    echo "firewall set completed..."
 }
 
 # Install 
 function install(){
     # Build and Install shadowsocks-libev
     if [ -s /usr/local/bin/ss-server ];then
-        echo "shadowsocks-libev has been installed!"
+	rm -rf $cur_dir/shadowsocks-libev-master/
+        echo "shadowsocks-libev 已安装!"
         exit 0
     else
         ./configure
@@ -236,18 +143,12 @@ function install(){
     rm -rf $cur_dir/shadowsocks-libev-master/
     # Delete shadowsocks-libev zip file
     rm -f shadowsocks-libev.zip
+	 /etc/init.d/shadowsocks stop
+	chkconfig --del shadowsocks
+	rm -f /etc/init.d/shadowsocks
     clear
     echo ""
-    echo "Congratulations, shadowsocks-libev install completed!"
-    echo -e "Your Server IP: \033[41;37m ${IP} \033[0m"
-    echo -e "Your Server Port: \033[41;37m ${shadowsocksport} \033[0m"
-    echo -e "Your Password: \033[41;37m ${shadowsockspwd} \033[0m"
-    echo -e "Your Local IP: \033[41;37m 127.0.0.1 \033[0m"
-    echo -e "Your Local Port: \033[41;37m 1080 \033[0m"
-    echo -e "Your Encryption Method: \033[41;37m aes-256-cfb \033[0m"
-    echo ""
-    echo "Welcome to visit:https://teddysun.com/357.html"
-    echo "Enjoy it!"
+    echo "恭喜, shadowsocks-libev 定制版安装完成!"
     echo ""
     exit 0
 }
@@ -297,8 +198,6 @@ function install_shadowsocks_libev(){
     disable_selinux
     pre_install
     download_files
-    config_shadowsocks
-    firewall_set
     install
 }
 
