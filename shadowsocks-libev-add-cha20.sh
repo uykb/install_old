@@ -140,7 +140,7 @@ function install(){
     echo "端口添加成功!"
     echo -e "服务器IP: \033[41;37m ${IP} \033[0m"
     echo -e "远程端口: \033[41;37m ${shadowsocksport} \033[0m"
-    echo -e "密码: \033[41;37m ${shadowsockspwd} \033[0m"
+    echo -e "你的密码: \033[41;37m ${shadowsockspwd} \033[0m"
     #echo -e "本地IP: \033[41;37m 127.0.0.1 \033[0m"
     echo -e "本地端口: \033[41;37m 1080 \033[0m"
     echo -e "加密方法: \033[41;37m chacha20 \033[0m"
