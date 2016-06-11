@@ -114,6 +114,7 @@ function install(){
     # Build and Install shadowsocks-libev
     if [ -s /usr/local/bin/ss-server ];then
 	rm -rf $cur_dir/shadowsocks-libev-master/
+	rm -f shadowsocks-libev.zip
         echo "shadowsocks-libev 已安装!"
         exit 0
     else
