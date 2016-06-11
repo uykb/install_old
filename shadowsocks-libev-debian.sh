@@ -12,10 +12,8 @@ export PATH
 clear
 echo
 echo "#############################################################"
-echo "# Install Shadowsocks-libev server for Debian or Ubuntu     #"
-echo "# Intro: https://teddysun.com/358.html                      #"
-echo "# Author: Teddysun <i@teddysun.com>                         #"
-echo "# Thanks: @m0d8ye <https://twitter.com/m0d8ye>              #"
+echo "# 安装 Shadowsocks-libev 服务 for Debian or Ubuntu          #"
+echo "# 制作: wxliuxh                                             #"
 echo "#############################################################"
 echo
 
@@ -38,26 +36,26 @@ fi
 # Pre-installation settings
 function pre_install(){
     #Set shadowsocks-libev config password
-    echo "Please input password for shadowsocks-libev:"
-    read -p "(Default password: teddysun.com):" shadowsockspwd
-    [ -z "$shadowsockspwd" ] && shadowsockspwd="teddysun.com"
+    echo "请输入要设置的密码 for shadowsocks-libev:"
+    read -p "(默认密码: wxliu):" shadowsockspwd
+    [ -z "$shadowsockspwd" ] && shadowsockspwd="wxliu"
     echo
     echo "---------------------------"
-    echo "password = $shadowsockspwd"
+    echo "密码 = $shadowsockspwd"
     echo "---------------------------"
     echo
     #Set shadowsocks-libev config port
     while true
     do
-    echo -e "Please input port for shadowsocks-libev [1-65535]:"
-    read -p "(Default port: 8989):" shadowsocksport
-    [ -z "$shadowsocksport" ] && shadowsocksport="8989"
+    echo -e "请输入要设置的端口 for shadowsocks-libev [1-65535]:"
+    read -p "(默认端口 16888):" shadowsocksport
+    [ -z "$shadowsocksport" ] && shadowsocksport="16888"
     expr $shadowsocksport + 0 &>/dev/null
     if [ $? -eq 0 ]; then
         if [ $shadowsocksport -ge 1 ] && [ $shadowsocksport -le 65535 ]; then
             echo
             echo "---------------------------"
-            echo "port = $shadowsocksport"
+            echo "端口 = $shadowsocksport"
             echo "---------------------------"
             echo
             break
@@ -78,7 +76,7 @@ function pre_install(){
         stty $SAVEDSTTY
     }
     echo
-    echo "Press any key to start...or Press Ctrl+C to cancel"
+    echo "按任意键继续安装...或 按 Ctrl+C 取消安装"
     char=`get_char`
     # Update System
     apt-get -y update
@@ -110,7 +108,7 @@ function download_files(){
     unzip shadowsocks-libev.zip
     if [ $? -eq 0 ];then
         cd $cur_dir/shadowsocks-libev-master/
-        if ! wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-libev-debian; then
+        if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev-debian; then
             echo "Failed to download shadowsocks-libev start script!"
             exit 1
         fi
@@ -174,16 +172,15 @@ function install_libev(){
     rm -f shadowsocks-libev.zip
     clear
     echo
-    echo "Congratulations, shadowsocks-libev install completed!"
-    echo -e "Your Server IP: \033[41;37m ${IP} \033[0m"
-    echo -e "Your Server Port: \033[41;37m ${shadowsocksport} \033[0m"
-    echo -e "Your Password: \033[41;37m ${shadowsockspwd} \033[0m"
-    echo -e "Your Local IP: \033[41;37m 127.0.0.1 \033[0m"
-    echo -e "Your Local Port: \033[41;37m 1080 \033[0m"
-    echo -e "Your Encryption Method: \033[41;37m aes-256-cfb \033[0m"
+    echo "恭喜你, shadowsocks-libev 安装完成!"
+    echo -e "服务器IP: \033[41;37m ${IP} \033[0m"
+    echo -e "服务器端口: \033[41;37m ${shadowsocksport} \033[0m"
+    echo -e "密码: \033[41;37m ${shadowsockspwd} \033[0m"
+    echo -e "本地IP: \033[41;37m 127.0.0.1 \033[0m"
+    echo -e "本地端口: \033[41;37m 1080 \033[0m"
+    echo -e "加密方法: \033[41;37m aes-256-cfb \033[0m"
     echo
-    echo "Welcome to visit:https://teddysun.com/358.html"
-    echo "Enjoy it!"
+    echo "好好享受吧!"
     echo
     exit 0
 }
@@ -249,7 +246,9 @@ uninstall)
     uninstall_shadowsocks_libev
     ;;
 *)
-    echo "Arguments error! [${action} ]"
-    echo "Usage: `basename $0` {install|uninstall}"
+    echo "参数错误! [${action} ]"
+	echo "命令: ./`basename $0`"
+	echo "或"
+    echo "命令: `basename $0` {install|uninstall}"
     ;;
 esac
