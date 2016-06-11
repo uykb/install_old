@@ -109,10 +109,22 @@ function download_files(){
         echo "Unzip shadowsocks-libev failed! Please visit https://teddysun.com/357.html and contact."
         exit 1
     fi
+	    # 下载256加密脚本
+    if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev-add-256.sh  -O /root/add256.sh; then
+        echo "Failed to download shadowsocks-libev-add-256.sh start script!"
+        exit 1
+    fi
+	    # 下载cha20加密脚本
+    if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev-add-cha20.sh  -O /root/add20.sh; then
+        echo "Failed to download shadowsocks-libev-add-cha20.sh start script!"
+        exit 1
+    fi
 }
 
 # Install 
 function install(){
+	chmod +x /root/add256.sh
+	chmod +x /root/add20.sh
     # Build and Install shadowsocks-libev
     if [ -s /usr/local/bin/ss-server ];then
 	rm -rf $cur_dir/shadowsocks-libev-master/
