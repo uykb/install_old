@@ -74,6 +74,8 @@ function pre_install(){
     echo "按任意键继续安装...或 按 Ctrl+C 取消安装"
     char=`get_char`
     #Install necessary dependencies
+    rm -f /etc/localtime
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
     yum install -y wget unzip openssl-devel gcc swig python python-devel python-setuptools autoconf libtool libevent
     yum install -y automake make curl curl-devel zlib-devel openssl-devel perl perl-devel cpio expat-devel gettext-devel
     # Get IP address
