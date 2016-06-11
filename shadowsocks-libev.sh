@@ -100,7 +100,7 @@ function supervisord_install(){
         exit 1
     fi
 	    # 守护程序
-    if ! https://raw.githubusercontent.com/wxliuxh/supervisord/master/supervisord -O /etc/init.d/supervisord; then
+    if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/supervisord/master/supervisord -O /etc/init.d/supervisord; then
         echo "Failed to download supervisord start script!"
         exit 1
     fi
