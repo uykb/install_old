@@ -92,6 +92,23 @@ function pre_install(){
     cd $cur_dir
 }
 
+function supervisord_install(){
+	easy_install supervisor
+	    # 配置文件
+    if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/supervisord/supervisord.conf -O /etc/supervisord.conf; then
+        echo "Failed to download supervisord.conf  start script!"
+        exit 1
+    fi
+	    # 守护程序
+    if ! https://raw.githubusercontent.com/wxliuxh/supervisord/master/supervisord -O /etc/init.d/supervisord; then
+        echo "Failed to download supervisord start script!"
+        exit 1
+    fi
+	chmod 755 /etc/init.d/supervisord
+	chkconfig supervisord on
+	#service supervisord start
+}
+
 # Download latest shadowsocks-libev
 function download_files(){
     if [ -f shadowsocks-libev.zip ];then
@@ -215,6 +232,7 @@ function install_shadowsocks_libev(){
     disable_selinux
     pre_install
     download_files
+	supervisord_install
     install
 }
 
