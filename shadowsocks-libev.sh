@@ -76,6 +76,7 @@ function pre_install(){
     #Install necessary dependencies
     rm -f /etc/localtime
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+	rm -f shadowsocks-libev.zip
     yum install -y wget unzip openssl-devel gcc swig python python-devel python-setuptools autoconf libtool libevent
     yum install -y automake make curl curl-devel zlib-devel openssl-devel perl perl-devel cpio expat-devel gettext-devel
     # Get IP address
@@ -127,9 +128,10 @@ function install(){
 	chmod +x /root/add20.sh
     # Build and Install shadowsocks-libev
     if [ -s /usr/local/bin/ss-server ];then
-    	rm -f shadowsocks-libev.zip
-	rm -rf $cur_dir/shadowsocks-libev-master/
+    	rm -rf $cur_dir/shadowsocks-libev-master/
+		clear
         echo "shadowsocks-libev 已安装!"
+		rm -f shadowsocks-libev.zip
         exit 0
     else
         ./configure
