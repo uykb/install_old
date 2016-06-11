@@ -123,7 +123,7 @@ function config_shadowsocks(){
     fi
     cat > /root/supervisor/ss-${shadowsocksport}.conf<<-EOF
 [program:sslibev_${shadowsocksport}]
-command=/usr/local/bin/ss-server -p ${shadowsocksport} -k ${shadowsockspwd} -m aes-256-cfb
+command=/usr/local/bin/ss-server -u -p ${shadowsocksport} -k ${shadowsockspwd} -m aes-256-cfb
 autostart=true
 autorestart=true
 user=root
