@@ -20,7 +20,7 @@ echo ""
 # Make sure only root can run our script
 function rootness(){
 if [[ $EUID -ne 0 ]]; then
-   echo "Error:This script must be run as root!" 1>&2
+   echo "错误:此脚本必须以root身份运行!" 1>&2
    exit 1
 fi
 }
@@ -58,7 +58,7 @@ fi
 function pre_install(){
     # Not support CentOS 5
     if centosversion 5; then
-        echo "Not support CentOS 5, please change to CentOS 6 or 7 and try again."
+        echo "不支持CentOS 5，请更改至CentOS 6或7，然后再试一次."
         exit 1
     fi
     get_char(){
@@ -80,12 +80,12 @@ function pre_install(){
     yum install -y wget unzip openssl-devel gcc swig python python-devel python-setuptools autoconf libtool libevent
     yum install -y automake make curl curl-devel zlib-devel openssl-devel perl perl-devel cpio expat-devel gettext-devel
     # Get IP address
-    echo "Getting Public IP address, Please wait a moment..."
+    echo "获取公网IP地址，请稍候..."
     IP=$(curl -s -4 icanhazip.com)
     if [[ "$IP" = "" ]]; then
         IP=`curl -s -4 ipinfo.io/ip`
     fi
-    echo -e "Your main public IP is\t\033[32m$IP\033[0m"
+    echo -e "你的首选公网IP是 \t\033[32m$IP\033[0m"
     echo ""
     #Current folder
     cur_dir=`pwd`
@@ -96,12 +96,12 @@ function supervisord_install(){
 	easy_install supervisor
 	    # 配置文件
     if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/supervisord/supervisord.conf -O /etc/supervisord.conf; then
-        echo "Failed to download supervisord.conf  start script!"
+        echo "无法下载 supervisord.conf 脚本!"
         exit 1
     fi
 	    # 守护程序
     if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/supervisord/master/supervisord -O /etc/init.d/supervisord; then
-        echo "Failed to download supervisord start script!"
+        echo "无法下载 supervisord 脚本!"
         exit 1
     fi
 	chmod 755 /etc/init.d/supervisord
@@ -112,10 +112,10 @@ function supervisord_install(){
 # Download latest shadowsocks-libev
 function download_files(){
     if [ -f shadowsocks-libev.zip ];then
-        echo "shadowsocks-libev.zip [found]"
+        echo "shadowsocks-libev.zip [存在]"
     else
         if ! wget --no-check-certificate https://github.com/shadowsocks/shadowsocks-libev/archive/master.zip -O shadowsocks-libev.zip;then
-            echo "Failed to download shadowsocks-libev.zip"
+            echo "无法下载 shadowsocks-libev.zip"
             exit 1
         fi
     fi
@@ -124,17 +124,17 @@ function download_files(){
         cd $cur_dir/shadowsocks-libev-master/
     else
         echo ""
-        echo "Unzip shadowsocks-libev failed! Please visit https://teddysun.com/357.html and contact."
+        echo "解压缩 shadowsocks-libev 失败!"
         exit 1
     fi
 	    # 下载256加密脚本
     if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev-add-256.sh  -O /root/add256.sh; then
-        echo "Failed to download shadowsocks-libev-add-256.sh start script!"
+        echo "无法下载 shadowsocks-libev-add-256.sh 脚本!"
         exit 1
     fi
 	    # 下载cha20加密脚本
     if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev-add-cha20.sh  -O /root/add20.sh; then
-        echo "Failed to download shadowsocks-libev-add-cha20.sh start script!"
+        echo "无法下载 shadowsocks-libev-add-cha20.sh 脚本!"
         exit 1
     fi
 }
@@ -162,13 +162,13 @@ function install(){
             # Start shadowsocks
             /etc/init.d/shadowsocks start
             if [ $? -eq 0 ]; then
-                echo "Shadowsocks-libev start success!"
+                echo "Shadowsocks-libev 启动 成功!"
             else
-                echo "Shadowsocks-libev start failure!"
+                echo "Shadowsocks-libev 启动 失败!"
             fi
         else
             echo ""
-            echo "Shadowsocks-libev install failed! Please visit https://teddysun.com/357.html and contact."
+            echo "Shadowsocks-libev 安装失败!."
             exit 1
         fi
     fi
@@ -221,9 +221,9 @@ function uninstall_shadowsocks_libev(){
         rm -f /usr/local/share/man/man1/ss-redir.1
         rm -f /usr/local/share/man/man8/shadowsocks.8
         rm -f /etc/init.d/shadowsocks
-        echo "Shadowsocks-libev uninstall success!"
+        echo "Shadowsocks-libev 卸载 成功!"
     else
-        echo "uninstall cancelled, Nothing to do"
+        echo "卸载取消，本次操作无任何修改"
     fi
 }
 
@@ -248,7 +248,7 @@ uninstall)
     uninstall_shadowsocks_libev
     ;;
 *)
-    echo "Arguments error! [${action} ]"
-    echo "Usage: `basename $0` {install|uninstall}"
+    echo "参数错误! [${action} ]"
+    echo "命令: `basename $0` {install|uninstall}"
     ;;
 esac
