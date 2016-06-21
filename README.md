@@ -1,9 +1,9 @@
 # shadowsocks_install
 原地址:https://github.com/teddysun/shadowsocks_install
 
-不知道什么原因.用go版和py版经常自杀..所以选用libev 和 supervisord 做成一键安装脚本
+本脚本选用libev 和 supervisord 做成一键安装脚本
 
-libev不支持多用户配置,研究发现supervisord可以通过独立的配置文件来多开SS.这样就成了多用户模式了.
+libev本身不支持多用户配置,研究发现supervisord可以通过独立的配置文件来多开SS.这样就成了多用户模式了.
 
 由于添加麻烦,又做成了一键设置脚本
 
