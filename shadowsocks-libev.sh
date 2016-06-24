@@ -11,7 +11,7 @@ export PATH
 
 clear
 echo "#############################################################"
-echo "# Install Shadowsocks-libev server for CentOS 6 or 7        #"
+echo "# Install Shadowsocks-libev server for CentOS 6 NO 7        #"
 echo "# shadowsocks-libev 定制版安装                              #"
 echo "# Author: wxliuxh                                           #"
 echo "#############################################################"
