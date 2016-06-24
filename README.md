@@ -7,10 +7,12 @@ libev本身不支持多用户配置,研究发现supervisord可以通过独立的
 
 由于添加麻烦,又做成了一键设置脚本
 
-系统改为centos 6 我用的是i386-----下面这是一整行代码.请完整复制.
+系统改为centos 6 我用的是i386
+提醒:下面这是一整行代码.请完整复制.
 ---------------------------------------
 cd /root && rm -rf shadowsocks-libev.sh && wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev.sh && sh ./shadowsocks-libev.sh && rm -rf shadowsocks-libev.sh
 ---------------------------------------
+提醒:上面这是一整行代码.请完整复制.
 
 脚本会自动同步时间为北京时间,安装shadowsocks-libev和supervisord,并且下载2个一键配置脚本,脚本的区别是加密不一样
 
