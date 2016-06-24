@@ -132,6 +132,44 @@ startretries=36
 EOF
 }
 
+function firewall_set(){
+    echo "开始防火墙设置..."
+    if centosversion 6; then
+        /etc/init.d/iptables status > /dev/null 2>&1
+        if [ $? -eq 0 ]; then
+            iptables -L -n | grep '${shadowsocksport}' | grep 'ACCEPT' > /dev/null 2>&1
+            if [ $? -ne 0 ]; then
+                iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport ${shadowsocksport} -j ACCEPT
+                iptables -I INPUT -m state --state NEW -m udp -p udp --dport ${shadowsocksport} -j ACCEPT
+                /etc/init.d/iptables save
+                /etc/init.d/iptables restart
+            else
+                echo "端口 ${shadowsocksport} 成功添加防火墙策略."
+            fi
+        else
+            echo "警告：iptables好像未运行或未安装，如有需要请手动设置."
+        fi
+    elif centosversion 7; then
+        systemctl status firewalld > /dev/null 2>&1
+        if [ $? -eq 0 ];then
+            firewall-cmd --permanent --zone=public --add-port=${shadowsocksport}/tcp
+            firewall-cmd --permanent --zone=public --add-port=${shadowsocksport}/udp
+            firewall-cmd --reload
+        else
+            echo "防火墙貌似没有运行，尝试启动..."
+            systemctl start firewalld
+            if [ $? -eq 0 ];then
+                firewall-cmd --permanent --zone=public --add-port=${shadowsocksport}/tcp
+                firewall-cmd --permanent --zone=public --add-port=${shadowsocksport}/udp
+                firewall-cmd --reload
+            else
+                echo "警告：尝试启动防火墙失败。如有需要请手动设置 ."
+            fi
+        fi
+    fi
+    echo "防火墙设置完成..."
+}
+
 # Install 
 function install(){
     service supervisord restart
@@ -181,6 +219,11 @@ function uninstall_shadowsocks_libev(){
 	rm -rf /root/supervisor/ss-${shadowsocksport}.conf
 	service supervisord restart
 	echo "端口配置删除成功!"
+	iptables -D INPUT -m state --state NEW -m tcp -p tcp --dport ${shadowsocksport} -j ACCEPT
+        iptables -D INPUT -m state --state NEW -m udp -p udp --dport ${shadowsocksport} -j ACCEPT
+        /etc/init.d/iptables save
+        /etc/init.d/iptables restart
+        echo "防火墙策略删除成功!"
 }
 
 # Install Shadowsocks-libev
@@ -189,6 +232,7 @@ function install_shadowsocks_libev(){
     disable_selinux
     pre_install
     config_shadowsocks
+    firewall_set
     install
 }
 
