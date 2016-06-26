@@ -111,6 +111,7 @@ function supervisord_install(){
 
 # Download latest shadowsocks-libev
 function download_files(){
+    rm -f shadowsocks-libev.zip
     if [ -f shadowsocks-libev.zip ];then
         echo "shadowsocks-libev.zip [存在]"
     else
