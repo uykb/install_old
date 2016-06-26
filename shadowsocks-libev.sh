@@ -127,6 +127,9 @@ function download_files(){
         echo "解压缩 shadowsocks-libev 失败!"
         exit 1
     fi
+}
+
+function download_script(){
 	    # 下载256加密脚本
     if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev-add-256.sh  -O /root/add256.sh; then
         echo "无法下载 shadowsocks-libev-add-256.sh 脚本!"
@@ -233,8 +236,15 @@ function install_shadowsocks_libev(){
     disable_selinux
     pre_install
     download_files
-	supervisord_install
+    download_script
+    supervisord_install
     install
+}
+
+function upscript_shadowsocks_libev(){
+    rootness
+    disable_selinux
+    download_script
 }
 
 # Initialization step
@@ -247,8 +257,11 @@ install)
 uninstall)
     uninstall_shadowsocks_libev
     ;;
+upscript)
+    upscript_shadowsocks_libev
+    ;;
 *)
     echo "参数错误! [${action} ]"
-    echo "命令: `basename $0` {install|uninstall}"
+    echo "命令: `basename $0` {install|uninstall|upscript}"
     ;;
 esac
