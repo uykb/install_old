@@ -20,6 +20,12 @@ cd /root && rm -rf shadowsocks-libev.sh && wget --no-check-certificate https://r
 ```Bash
 cd /root && rm -rf shadowsocks-libev.sh && wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev.sh && sh ./shadowsocks-libev.sh uninstall && rm -rf shadowsocks-libev.sh
 ```
+
+更新操作端口的sh脚本
+```Bash
+cd /root && rm -rf shadowsocks-libev.sh && wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev.sh && sh ./shadowsocks-libev.sh upscript && rm -rf shadowsocks-libev.sh
+```
+
 #以下为注释
 脚本会自动同步时间为北京时间,安装shadowsocks-libev和supervisord,并且下载2个一键配置脚本,脚本的区别是加密不一样
 
