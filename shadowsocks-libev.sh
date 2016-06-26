@@ -71,7 +71,7 @@ function pre_install(){
         stty $SAVEDSTTY
     }
     echo ""
-    echo "按任意键继续安装...或 按 Ctrl+C 取消安装"
+    echo "按任意键继续安装或更新...或 按 Ctrl+C 取消安装"
     char=`get_char`
     #Install necessary dependencies
     rm -f /etc/localtime
