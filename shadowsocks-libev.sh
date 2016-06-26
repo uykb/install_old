@@ -144,16 +144,9 @@ function download_script(){
 
 # Install 
 function install(){
-	chmod +x /root/add256.sh
-	chmod +x /root/add20.sh
+    chmod +x /root/add256.sh
+    chmod +x /root/add20.sh
     # Build and Install shadowsocks-libev
-    if [ -s /usr/local/bin/ss-server ];then
-    	rm -rf $cur_dir/shadowsocks-libev-master/
-		clear
-        echo "shadowsocks-libev 已安装!"
-		rm -f shadowsocks-libev.zip
-        exit 0
-    else
         ./configure
         make && make install
         if [ $? -eq 0 ]; then
@@ -193,9 +186,9 @@ function install(){
 
 # Uninstall Shadowsocks-libev
 function uninstall_shadowsocks_libev(){
-    printf "Are you sure uninstall shadowsocks_libev? (y/n) "
+    printf "你真的要卸载shadowsocks_libev吗? (y/n) "
     printf "\n"
-    read -p "(Default: n):" answer
+    read -p "(默认为: n):" answer
     if [ -z $answer ]; then
         answer="n"
     fi
@@ -247,6 +240,9 @@ function upscript_shadowsocks_libev(){
     rootness
     disable_selinux
     download_script
+    chmod +x /root/add256.sh
+    chmod +x /root/add20.sh
+    clear
     echo "脚本更新成功."
 }
 
