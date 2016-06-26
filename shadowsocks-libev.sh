@@ -178,7 +178,7 @@ function install(){
     clear
     echo ""
     echo "恭喜, shadowsocks-libev 定制版安装完成!"
-    echo "请运行 ./add256.sh 或 ./add20.sh 添加/删除端口"
+    echo "请运行 ./add20.sh 或 ./add256.sh 添加/删除端口"
     echo ""
     exit 0
 }
