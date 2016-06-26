@@ -224,8 +224,10 @@ function uninstall_shadowsocks_libev(){
         rm -f /usr/local/share/man/man1/ss-redir.1
         rm -f /usr/local/share/man/man8/shadowsocks.8
         rm -f /etc/init.d/shadowsocks
+        clear
         echo "Shadowsocks-libev 卸载 成功!"
     else
+    	clear
         echo "卸载取消，本次操作无任何修改"
     fi
 }
