@@ -247,6 +247,7 @@ function upscript_shadowsocks_libev(){
     rootness
     disable_selinux
     download_script
+    echo "脚本更新成功."
 }
 
 # Initialization step
