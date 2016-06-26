@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 #===============================================================================================
 #   System Required:  CentOS6.x (32bit/64bit)
-#   Description: Install Shadowsocks-libev server for CentOS 6 or 7
+#   Description: Install Shadowsocks-libev server for CentOS 6
 #   Author: Teddysun <i@teddysun.com>
 #   Thanks: @m0d8ye <https://twitter.com/m0d8ye>
 #   Intro:  https://teddysun.com/357.html
@@ -58,7 +58,7 @@ fi
 function pre_install(){
     # Not support CentOS 5
     if centosversion 5; then
-        echo "不支持CentOS 5，请更改至CentOS 6或7，然后再试一次."
+        echo "不支持CentOS 5与CentOS 7，请更改至CentOS 6，然后再试一次."
         exit 1
     fi
     get_char(){
@@ -147,34 +147,34 @@ function install(){
     chmod +x /root/add256.sh
     chmod +x /root/add20.sh
     # Build and Install shadowsocks-libev
-        ./configure
-        make && make install
-        if [ $? -eq 0 ]; then
-            mv $cur_dir/shadowsocks-libev-master/shadowsocks-libev /etc/init.d/shadowsocks
-            chmod +x /etc/init.d/shadowsocks
-            # Add run on system start up
-            chkconfig --add shadowsocks
-            chkconfig shadowsocks on
-            # Start shadowsocks
-            /etc/init.d/shadowsocks start
-            if [ $? -eq 0 ]; then
-                echo "Shadowsocks-libev 启动 成功!"
-            else
-                echo "Shadowsocks-libev 启动 失败!"
-            fi
-        else
-            echo ""
-            echo "Shadowsocks-libev 安装失败!."
-            exit 1
+    ./configure
+    make && make install
+    if [ $? -eq 0 ]; then
+        mv $cur_dir/shadowsocks-libev-master/shadowsocks-libev /etc/init.d/shadowsocks
+        chmod +x /etc/init.d/shadowsocks
+        # Add run on system start up
+        chkconfig --add shadowsocks
+        chkconfig shadowsocks on
+        # Start shadowsocks
+        /etc/init.d/shadowsocks start
+    if [ $? -eq 0 ]; then
+        echo "Shadowsocks-libev 启动 成功!"
+    else
+        echo "Shadowsocks-libev 启动 失败!"
         fi
+    else
+        echo ""
+        echo "Shadowsocks-libev 安装失败!."
+        exit 1
+    fi
     cd $cur_dir
     # Delete shadowsocks-libev floder
     rm -rf $cur_dir/shadowsocks-libev-master/
     # Delete shadowsocks-libev zip file
     rm -f shadowsocks-libev.zip
-	 /etc/init.d/shadowsocks stop
-	chkconfig --del shadowsocks
-	rm -f /etc/init.d/shadowsocks
+    /etc/init.d/shadowsocks stop
+    chkconfig --del shadowsocks
+    rm -f /etc/init.d/shadowsocks
     clear
     echo ""
     echo "恭喜, shadowsocks-libev 定制版安装完成!"
