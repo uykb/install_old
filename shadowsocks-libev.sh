@@ -167,7 +167,6 @@ function install(){
             echo "Shadowsocks-libev 安装失败!."
             exit 1
         fi
-    fi
     cd $cur_dir
     # Delete shadowsocks-libev floder
     rm -rf $cur_dir/shadowsocks-libev-master/
