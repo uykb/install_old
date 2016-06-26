@@ -16,11 +16,11 @@ cd /root && rm -rf shadowsocks-libev.sh && wget --no-check-certificate https://r
 ./add20.sh
 ```
 
-#卸载shadowsocks-libev,请注意,卸载不会丢失端口配置.如需删除请手动删除/root/supervisor文件夹即可
+卸载shadowsocks-libev,请注意,卸载不会丢失端口配置.如需删除请手动删除/root/supervisor文件夹即可
 ```Bash
 cd /root && rm -rf shadowsocks-libev.sh && wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev.sh && sh ./shadowsocks-libev.sh && rm -rf shadowsocks-libev.sh
 ```
-
+#以下为注释
 脚本会自动同步时间为北京时间,安装shadowsocks-libev和supervisord,并且下载2个一键配置脚本,脚本的区别是加密不一样
 
 安装完成后,运行 ./add20.sh 或者 ./add256.sh 进行端口配置.<br>删除的话 ./add20.sh del 或者 ./add256.sh del 均可.<br>提示:删除这2个脚本是通用的<br>
