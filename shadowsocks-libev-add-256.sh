@@ -190,7 +190,11 @@ function install(){
 
 # Uninstall Shadowsocks-libev
 function uninstall_shadowsocks_libev(){
-    echo -e "删除端口操作"
+clear
+echo "#############################################################"
+echo "#     删除 多用户 端口/密码        默认加密 aes-256-cfb       #"
+echo "#############################################################"
+echo ""
 	cd /root/supervisor
 	echo "---------------------------"
 	ls
