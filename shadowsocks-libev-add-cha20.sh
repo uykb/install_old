@@ -11,7 +11,7 @@ export PATH
 
 clear
 echo "#############################################################"
-echo "#     添加/删除-端口/密码        默认加密 chacha20          #"
+echo "#     添加 多用户 端口/密码        默认加密 chacha20          #"
 echo "#############################################################"
 echo ""
 
@@ -100,7 +100,7 @@ function pre_install(){
         stty $SAVEDSTTY
     }
     echo ""
-    echo "按任意键继续安装...或 按 Ctrl+C 取消安装"
+    echo "按任意键继续...或 按 Ctrl+C 取消"
     char=`get_char`
     # Get IP address
     echo "Getting Public IP address, Please wait a moment..."
@@ -190,6 +190,11 @@ function install(){
 
 # Uninstall Shadowsocks-libev
 function uninstall_shadowsocks_libev(){
+clear
+echo "#############################################################"
+echo "#     删除 多用户 端口/密码        默认加密 chacha20          #"
+echo "#############################################################"
+echo ""
 	cd /root/supervisor
 	echo "---------------------------"
 	ls
