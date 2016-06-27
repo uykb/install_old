@@ -15,7 +15,10 @@ cd /root && rm -rf shadowsocks-libev.sh && wget --no-check-certificate https://r
 ```
 ./add20.sh
 ```
-
+删除已配置端口
+```
+./add20.sh del
+```
 卸载shadowsocks-libev,请注意,卸载不会丢失端口配置.如需删除请手动删除/root/supervisor文件夹即可
 ```Bash
 cd /root && rm -rf shadowsocks-libev.sh && wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev.sh && sh ./shadowsocks-libev.sh uninstall && rm -rf shadowsocks-libev.sh
