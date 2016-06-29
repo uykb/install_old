@@ -11,7 +11,7 @@ export PATH
 
 clear
 echo "#############################################################"
-echo "# Install Shadowsocks-libev server for CentOS 6 NO 7        #"
+echo "# 请注意;本安装脚本仅支持 CentOS 6 系统                     #"
 echo "# shadowsocks-libev 定制版安装                              #"
 echo "# Author: wxliuxh                                           #"
 echo "#############################################################"
