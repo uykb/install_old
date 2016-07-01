@@ -123,7 +123,7 @@ function config_shadowsocks(){
     fi
     cat > /root/supervisor/ss-${shadowsocksport}.conf<<-EOF
 [program:sslibev_${shadowsocksport}]
-command=/usr/local/bin/ss-server -u -p ${shadowsocksport} -k ${shadowsockspwd} -m chacha20
+command=/usr/local/bin/ss-server -u -t 60 -p ${shadowsocksport} -k ${shadowsockspwd} -m chacha20
 autostart=true
 autorestart=true
 user=root
