@@ -154,35 +154,15 @@ function install(){
     # Build and Install shadowsocks-libev
     ./configure
     make && make install
-    if [ $? -eq 0 ]; then
-        mv $cur_dir/shadowsocks-libev-master/shadowsocks-libev /etc/init.d/shadowsocks
-        chmod +x /etc/init.d/shadowsocks
-        # Add run on system start up
-        chkconfig --add shadowsocks
-        chkconfig shadowsocks on
-        # Start shadowsocks
-        /etc/init.d/shadowsocks start
-    if [ $? -eq 0 ]; then
-        echo "Shadowsocks-libev 启动 成功!"
-    else
-        echo "Shadowsocks-libev 启动 失败!"
-        fi
-    else
-        echo ""
-        echo "Shadowsocks-libev 安装失败!."
-        exit 1
-    fi
     cd $cur_dir
     # Delete shadowsocks-libev floder
     rm -rf $cur_dir/shadowsocks-libev-master/
     # Delete shadowsocks-libev zip file
     rm -f shadowsocks-libev.zip
-    /etc/init.d/shadowsocks stop
-    chkconfig --del shadowsocks
     rm -f /etc/init.d/shadowsocks
     clear
     echo ""
-    echo "恭喜, shadowsocks-libev 定制版安装完成!"
+    echo "恭喜你, shadowsocks-libev 定制版安装完成!"
     echo "请运行 ./add20.sh 或 ./add256.sh 添加/删除端口"
     echo ""
     exit 0
