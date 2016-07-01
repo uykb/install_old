@@ -34,4 +34,4 @@ cd /root && rm -rf shadowsocks-libev.sh && wget --no-check-certificate https://r
 
 安装完成后,运行 ./add20.sh 或者 ./add256.sh 进行端口配置.<br>删除的话 ./add20.sh del 或者 ./add256.sh del 均可.<br>提示:删除这2个脚本是通用的<br>
 配置完成后立即起效<br>
-支持UDP转发
+支持UDP转发 timeout默认为60
