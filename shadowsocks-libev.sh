@@ -244,6 +244,7 @@ function upscript_shadowsocks_libev(){
     rootness
     disable_selinux
     download_script
+    chmod 755 /etc/init.d/supervisord
     chmod +x /root/add256.sh
     chmod +x /root/add20.sh
     clear
