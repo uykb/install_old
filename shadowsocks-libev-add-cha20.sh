@@ -176,6 +176,7 @@ function install(){
     clear
     echo ""
     echo "端口添加成功!"
+    echo ""
     echo -e "服务器IP: \033[41;37m ${IP} \033[0m"
     echo -e "远程端口: \033[41;37m ${shadowsocksport} \033[0m"
     echo -e "你的密码: \033[41;37m ${shadowsockspwd} \033[0m"
