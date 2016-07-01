@@ -93,16 +93,6 @@ function pre_install(){
 
 function supervisord_install(){
 	easy_install supervisor
-	    # 配置文件
-    if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/supervisord/supervisord.conf -O /etc/supervisord.conf; then
-        echo "无法下载 supervisord.conf 脚本!"
-        exit 1
-    fi
-	    # 守护程序
-    if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/supervisord/master/supervisord -O /etc/init.d/supervisord; then
-        echo "无法下载 supervisord 脚本!"
-        exit 1
-    fi
 	chmod 755 /etc/init.d/supervisord
 	chkconfig supervisord on
 	#service supervisord start
