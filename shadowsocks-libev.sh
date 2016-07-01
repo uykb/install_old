@@ -130,6 +130,21 @@ function download_files(){
 }
 
 function download_script(){
+	    # 守护程序
+    if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/supervisord/supervisord.conf -O /etc/supervisord.conf; then
+        echo "无法下载 supervisord.conf 脚本!"
+        exit 1
+    fi
+	    # 守护程序
+    if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/supervisord/master/supervisord -O /etc/init.d/supervisord; then
+        echo "无法下载 supervisord 脚本!"
+        exit 1
+    fi
+	    # ulimit 修改
+    if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/limits.conf -O /etc/security/limits.conf; then
+        echo "无法下载 limits.conf 脚本!"
+        exit 1
+    fi
 	    # 下载256加密脚本
     if ! wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev-add-256.sh  -O /root/add256.sh; then
         echo "无法下载 shadowsocks-libev-add-256.sh 脚本!"
