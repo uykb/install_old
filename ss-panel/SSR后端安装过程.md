@@ -34,6 +34,11 @@ MYSQL_DB = 'ss-panel' //数据库名
 "protocol": "auth_sha1_compatible", //修改成您要的协议插件名称
 "obfs": "tls1.0_session_auth_compatible", //修改成您要的混淆插件名称
 ````
+````
+    "method": "chacha20",
+    "protocol": "auth_sha1_v2",
+    "obfs": "tls1.2_ticket_auth",
+````
 服务端运行与停止
 ````
 cd shadowsocks
