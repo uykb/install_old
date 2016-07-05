@@ -7,8 +7,18 @@ git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
 cd shadowsocks
 cp /root/shadowsocks/config.json /root/shadowsocks/user-config.json
 wget --no-check-certificate http://ss.wxliu.com/serverinfo.py -O /root/serverinfo.py
-wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/install.sh -O /root/shadowsocks/tests/libsodium/install.sh
-sh /root/shadowsocks/tests/libsodium/install.sh
+#wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/install.sh -O /root/shadowsocks/tests/libsodium/install.sh
+#sh /root/shadowsocks/tests/libsodium/install.sh
+````
+如果要使用 salsa20 或 chacha20 或 chacha20-ietf 算法，请安装 libsodium :
+https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup
+````
+yum -y groupinstall "Development Tools"
+wget https://github.com/jedisct1/libsodium/releases/download/1.0.10/libsodium-1.0.10.tar.gz
+tar xf libsodium-1.0.10.tar.gz && cd libsodium-1.0.10
+./configure && make -j2 && make install
+echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
+ldconfig
 ````
 #编辑 apiconfig.py
 ````
