@@ -40,14 +40,16 @@ MYSQL_DB = 'ss-panel' //数据库名
 安装守护进程 supervisord
 ````
 easy_install supervisor
-chmod 755 /etc/init.d/supervisord
-chkconfig supervisord on
-#service supervisord start
 ````
 ````
 wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/supervisord.conf -O /etc/supervisord.conf
 wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/supervisord/master/supervisord -O /etc/init.d/supervisord
 wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/limits.conf -O /etc/security/limits.conf
+````
+````
+chmod 755 /etc/init.d/supervisord
+chkconfig supervisord on
+#service supervisord start
 ````
 
 服务端运行与停止
