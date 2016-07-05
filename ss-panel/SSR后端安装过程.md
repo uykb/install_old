@@ -26,7 +26,7 @@ MYSQL_HOST = 'localhost' //前端mysql域名/IP
 MYSQL_PORT = 3306 //mysql端口
 MYSQL_USER = 'ss' //mysql用户名
 MYSQL_PASS = 'ss' //mysql密码
-MYSQL_DB = 'shadowsocks' //数据库名
+MYSQL_DB = 'ss-panel' //数据库名
 ````
 #编辑 user-config.json
 ````
