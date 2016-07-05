@@ -18,6 +18,14 @@ tar xf libsodium-1.0.10.tar.gz && cd libsodium-1.0.10
 echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
 ldconfig
 ````
+#编辑 serverinfo.py
+````
+修改serverinfo.py中posturl为你的站点地址，server_id为当前节点对应的ID（/admin/node.php第一列）
+````
+#测试脚本运行命令
+````
+python serverinfo.py //本脚本可独立于Shadowsocks服务端运行/The script can be used independently of Shadowsocks server.
+````
 #编辑 apiconfig.py
 ````
 MYSQL_HOST = 'localhost' //前端mysql域名/IP
