@@ -7,16 +7,8 @@ git clone -b manyuser https://github.com/mengskysama/shadowsocks.git
 cd shadowsocks/shadowsocks
 wget --no-check-certificate http://ss.wxliu.com/serverinfo.py -O /root/serverinfo.py
 ````
-###如果要使用 salsa20 或 chacha20 或 chacha20-ietf 算法，请安装 libsodium :
-https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup
-````
-yum -y groupinstall "Development Tools"
-wget https://github.com/jedisct1/libsodium/releases/download/1.0.10/libsodium-1.0.10.tar.gz
-tar xf libsodium-1.0.10.tar.gz && cd libsodium-1.0.10
-./configure && make -j2 && make install
-echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
-ldconfig
-````
+###不支持 salsa20 或 chacha20 或 chacha20-ietf 等新算法，请安装 SSR
+
 ###编辑 Config.py
 ````
 MYSQL_HOST = 'localhost' //前端mysql域名/IP
@@ -53,7 +45,7 @@ service supervisord start
 
 服务端运行与停止
 ````
-cd shadowsocks
+cd shadowsocks/shadowsocks
 python server.py
 ````
 更新源代码
