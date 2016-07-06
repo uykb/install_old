@@ -73,3 +73,19 @@ python server.py
 cd shadowsocks
 git pull
 ````
+id //用户id数据库字段说明:
+````
+email //用户邮箱
+pass //用户密码
+passwd //ss密码
+t //最后使用的时间
+u //已上传流量
+d //已下载流量
+transfer_enable //可用流量（总量）
+port //ss端口
+switch //保留字段
+enable //启用或禁用ss帐号（1启用，0禁用）
+type //保留字段
+last_get_gift_time //保留字段
+last_rest_pass_time //保留字段
+````
