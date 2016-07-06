@@ -45,7 +45,7 @@ service supervisord start
 
 服务端运行与停止
 ````
-cd shadowsocks/shadowsocks
+cd /root/shadowsocks/shadowsocks
 python server.py
 ````
 更新源代码
