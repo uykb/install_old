@@ -42,9 +42,26 @@ MYSQL_DB = 'ss-panel' //数据库名
 "obfs": "tls1.0_session_auth_compatible", //修改成您要的混淆插件名称
 ````
 ````
+{
+    "server": "0.0.0.0",
+    "server_ipv6": "::",
+    "server_port": 8388,
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+    "password": "m",
+    "timeout": 120,
+    "udp_timeout": 60,
     "method": "chacha20",
-    "protocol": "auth_sha1_v2",
-    "obfs": "tls1.2_ticket_auth",
+    "protocol": "origin",
+    "protocol_param": "",
+    "obfs": "plain",
+    "obfs_param": "",
+    "dns_ipv6": false,
+    "connect_verbose_info": 0,
+    "redirect": "",
+    "fast_open": false
+}
+
 ````
 ###安装守护进程 supervisord
 ````
