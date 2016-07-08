@@ -83,12 +83,12 @@ service supervisord start
 
 服务端运行与停止
 ````
-cd shadowsocks
+cd /root/shadowsocks
 python server.py
 ````
 更新源代码
 ````
-cd shadowsocks
+cd /root/shadowsocks
 git pull
 ````
 id //用户id数据库字段说明:
