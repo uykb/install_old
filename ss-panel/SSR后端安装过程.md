@@ -1,7 +1,7 @@
 #Centos 6
 ````
-yum install python-setuptools && easy_install pip
-yum install m2crypto git gcc python-devel -y
+yum  -y install python-setuptools && easy_install pip
+yum  -y install m2crypto git gcc python-devel
 pip install psutil cymysql
 git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
 cd shadowsocks
