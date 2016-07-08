@@ -77,7 +77,11 @@ chmod 755 /etc/init.d/supervisord
 chkconfig supervisord on
 service supervisord start
 ````
-
+高级节点需要替换文件
+````
+rm -rf /root/shadowsocks/*.pyc
+wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/switchrule.py -O /root/shadowsocks/switchrule.py
+````
 
 
 
