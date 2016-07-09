@@ -7,7 +7,7 @@ git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
 cd shadowsocks
 cp /root/shadowsocks/config.json /root/shadowsocks/user-config.json
 #wget --no-check-certificate http://ss.wxliu.com/serverinfo.py -O /root/serverinfo.py
-wget --no-check-certificate https://ss.wxliu.com/serverinfo.py -O /root/serverinfo.py
+wget --no-check-certificate http://ss.wxliu.com/serverinfo.py -O /root/serverinfo.py
 ````
 ###如果要使用 salsa20 或 chacha20 或 chacha20-ietf 算法，请安装 libsodium :
 https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup
