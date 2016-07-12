@@ -82,8 +82,13 @@ service supervisord start
 rm -rf /root/shadowsocks/*.pyc
 wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/switchrule.py -O /root/shadowsocks/switchrule.py
 ````
-
-
+出现(1042, u"Can't get hostname for your address")错误
+````
+my.cnf里,[mysqld]项目下
+添加
+skip-name-resolve
+#忽略主机名的方式访问
+````
 
 服务端运行与停止
 ````
