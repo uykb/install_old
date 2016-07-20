@@ -6,7 +6,7 @@ pip install psutil cymysql
 git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
 cd shadowsocks
 cp /root/shadowsocks/config.json /root/shadowsocks/user-config.json
-cp /root/shadowsocks/apiconfig.py /root/shadowsocks/user-apiconfig.py
+cp /root/shadowsocks/apiconfig.py /root/shadowsocks/userapiconfig.py
 wget --no-check-certificate http://ss.wxliu.com/serverinfo.py -O /root/serverinfo.py
 wget --no-check-certificate http://ss.wxliu.com/connections.sh -O /root/connections.sh
 ````
