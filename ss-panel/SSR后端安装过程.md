@@ -5,8 +5,9 @@ yum -y install m2crypto git gcc python-devel wget
 pip install psutil cymysql
 git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
 cd shadowsocks
-cp /root/shadowsocks/config.json /root/shadowsocks/user-config.json
-cp /root/shadowsocks/apiconfig.py /root/shadowsocks/userapiconfig.py
+cp apiconfig.py userapiconfig.py
+cp mysql.json usermysql.json
+cp config.json userconfig.json
 wget --no-check-certificate http://ss.wxliu.com/serverinfo.py -O /root/serverinfo.py
 wget --no-check-certificate http://ss.wxliu.com/connections.sh -O /root/connections.sh
 ````
@@ -28,15 +29,16 @@ ldconfig
 ````
 python serverinfo.py //本脚本可独立于Shadowsocks服务端运行/The script can be used independently of Shadowsocks server.
 ````
-###编辑 apiconfig.py
+###编辑 usermysql.json
 ````
-MYSQL_HOST = 'localhost' //前端mysql域名/IP
-MYSQL_PORT = 3306 //mysql端口
-MYSQL_USER = 'ss' //mysql用户名
-MYSQL_PASS = 'ss' //mysql密码
-MYSQL_DB = 'ss-panel' //数据库名
+    "host": "localhost",    //前端mysql域名/IP
+    "port": 3306,           //mysql端口
+    "user": "ss",           //mysql用户名
+    "password": "ss",       //mysql密码
+    "db": "ssdb",           //数据库名
+    "node_id": 1,           //节点ID
 ````
-###编辑 user-config.json
+###编辑 userconfig.json
 ````
 "method":"aes-256-cfb", //修改成您要的加密方式的名称
 "protocol": "auth_sha1_compatible", //修改成您要的协议插件名称
@@ -62,7 +64,6 @@ MYSQL_DB = 'ss-panel' //数据库名
     "redirect": "",
     "fast_open": false
 }
-
 ````
 ###安装守护进程 supervisord
 ````
