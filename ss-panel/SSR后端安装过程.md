@@ -7,7 +7,7 @@ git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
 cd shadowsocks
 cp apiconfig.py userapiconfig.py
 cp mysql.json usermysql.json
-cp config.json userconfig.json
+cp config.json user-config.json
 wget --no-check-certificate http://ss.wxliu.com/serverinfo.py -O /root/serverinfo.py
 wget --no-check-certificate http://ss.wxliu.com/connections.sh -O /root/connections.sh
 ````
@@ -31,14 +31,24 @@ python serverinfo.py //本脚本可独立于Shadowsocks服务端运行/The scrip
 ````
 ###编辑 usermysql.json
 ````
-    "host": "localhost",    //前端mysql域名/IP
-    "port": 3306,           //mysql端口
-    "user": "ss",           //mysql用户名
-    "password": "ss",       //mysql密码
-    "db": "ssdb",           //数据库名
-    "node_id": 1,           //节点ID
+{
+    "host": "127.0.0.1",
+    "port": 3306,
+    "user": "ss",
+    "password": "pass",
+    "db": "shadowsocks",
+    "node_id": 1,
+    "transfer_mul": 1.0,
+    "ssl_enable": 0,
+    "ssl_ca": "",
+    "ssl_cert": "",
+    "ssl_key": ""
+}
 ````
-###编辑 userconfig.json
+以上包括（按次序）：数据库服务器地址，端口，数据库登陆用户名，密码，数据库表，节点ID（sspanelv3支持），流量比率，开启mysql的SSL连接等等
+
+
+###编辑 user-config.json
 ````
 "method":"aes-256-cfb", //修改成您要的加密方式的名称
 "protocol": "auth_sha1_compatible", //修改成您要的协议插件名称
