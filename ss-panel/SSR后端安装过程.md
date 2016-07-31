@@ -3,6 +3,7 @@
 yum -y install python-setuptools && easy_install pip
 yum -y install m2crypto git gcc python-devel wget
 pip install psutil cymysql
+#注意!!如果需要chacha20加密请先安装下面的加密库
 git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
 cd shadowsocks
 cp apiconfig.py userapiconfig.py
