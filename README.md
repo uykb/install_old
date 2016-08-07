@@ -9,7 +9,8 @@ libev本身不支持多用户配置,研究发现supervisord可以通过独立的
 提醒:下面这是一整行代码.请完整复制.这是安装脚本,同时也是更新安装最新版本的shadowsocks-libev脚本
 
 ```Bash
-cd /root && rm -rf shadowsocks-libev.sh && wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev.sh && sh ./shadowsocks-libev.sh && rm -rf shadowsocks-libev.sh
+yum -y install wget
+ && cd /root && rm -rf shadowsocks-libev.sh && wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/shadowsocks-libev.sh && sh ./shadowsocks-libev.sh && rm -rf shadowsocks-libev.sh
 ```
 安装完成后再运行以下代码配置端口和密码
 ```
