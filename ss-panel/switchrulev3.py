@@ -13,5 +13,5 @@ def getKeys():
 
 def isTurnOn(row):
 	#return True
-	return row['id'] == '1' # then judge here
+	return row['id'] == 1 # id的话,值不要带(')号
 
