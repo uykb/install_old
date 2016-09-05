@@ -83,6 +83,11 @@ MANAGE_BIND_IP = '127.0.0.1'
 #make sure this port is idle
 MANAGE_PORT = 23333
 ````
+###特殊节点需要替换文件-我自用的.你们看懂了再用
+````
+rm -rf /root/shadowsocks/*.pyc
+wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/switchrulev3.py -O /root/shadowsocks/switchrule.py
+````
 ###安装守护进程 supervisord
 ````
 easy_install supervisor
