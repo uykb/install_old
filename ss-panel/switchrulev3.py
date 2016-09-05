@@ -14,3 +14,4 @@ def getKeys():
 def isTurnOn(row):
 	#return True
 	return row['id'] == 1 
+	#return row['plan'] == 'D' or row['plan']== 'E'  # then judge here
