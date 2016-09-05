@@ -97,12 +97,8 @@ chmod 755 /etc/init.d/supervisord
 chkconfig supervisord on
 service supervisord start
 ````
-高级节点需要替换文件
-````
-rm -rf /root/shadowsocks/*.pyc
-wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/switchrule.py -O /root/shadowsocks/switchrule.py
-````
-出现(1042, u"Can't get hostname for your address")错误
+
+###出现(1042, u"Can't get hostname for your address")错误
 ````
 my.cnf里,[mysqld]项目下
 添加
@@ -115,11 +111,14 @@ skip-name-resolve
 cd /root/shadowsocks
 python server.py
 ````
-更新源代码
+###关于升级
 ````
-cd /root/shadowsocks
+cd shadowsocks
 git pull
 ````
+###记得看 https://github.com/glzjin/shadowsocks/wiki/重大更新日志 添加配置项。
+
+
 id //用户id数据库字段说明:
 ````
 email //用户邮箱
