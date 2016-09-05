@@ -106,8 +106,11 @@ skip-name-resolve
 #忽略主机名的方式访问
 ````
 
-服务端运行与停止
+###服务端运行与停止
 ````
+service supervisord stop
+service supervisord restart
+----
 cd /root/shadowsocks
 python server.py
 ````
