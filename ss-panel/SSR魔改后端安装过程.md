@@ -93,7 +93,7 @@ wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsock
 easy_install supervisor
 ````
 ````
-wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/supervisord.conf -O /etc/supervisord.conf
+wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/supervisordv3.conf -O /etc/supervisord.conf
 wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/supervisord/master/supervisord -O /etc/init.d/supervisord
 wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/limits.conf -O /etc/security/limits.conf
 ````
