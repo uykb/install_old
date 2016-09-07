@@ -117,7 +117,8 @@ service supervisord stop
 service supervisord restart
 ----
 cd /root/shadowsocks
-python server.py
+python server.py &
+killall python server.py
 ````
 ###关于升级
 ````
