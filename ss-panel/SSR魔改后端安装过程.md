@@ -2,7 +2,7 @@
 ````
 yum -y install python-setuptools && easy_install pip
 yum -y install git wget
-pip install cymysql
+pip install cymysql speedtest-cli
 git clone -b manyuser https://github.com/glzjin/shadowsocks.git
 cd shadowsocks
 cp apiconfig.py userapiconfig.py
@@ -101,6 +101,10 @@ wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsock
 chmod 755 /etc/init.d/supervisord
 chkconfig supervisord on
 service supervisord start
+````
+### 测速
+````
+speedtest-cli
 ````
 ### 关闭关闭开启防火墙 关闭开启防火墙防火墙
 ````
