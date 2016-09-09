@@ -102,7 +102,19 @@ chmod 755 /etc/init.d/supervisord
 chkconfig supervisord on
 service supervisord start
 ````
+### 关闭关闭开启防火墙 关闭开启防火墙防火墙
+````
+chkconfig iptables off
+service iptables stop
 
+1) 重启后生效 
+开启： chkconfig iptables on 
+关闭： chkconfig iptables off 
+
+2) 即时生效，重启后失效 
+开启： service iptables start 
+关闭： service iptables stop 
+````
 ###出现(1042, u"Can't get hostname for your address")错误
 ````
 my.cnf里,[mysqld]项目下
