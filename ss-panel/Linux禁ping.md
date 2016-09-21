@@ -8,7 +8,7 @@ echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all
 ````
 echo 0 > /proc/sys/net/ipv4/icmp_echo_ignore_all
 ````
-##kaiji开机zid开机自动jinzhi开机自动禁止PING
+##开机自动禁止PING
 ````
-echo '/usr/bin/kms-server' >> /etc/rc.local
+echo 'echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all' >> /etc/rc.local
 ````
