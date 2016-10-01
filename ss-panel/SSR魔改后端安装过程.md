@@ -144,7 +144,8 @@ git pull
 ###记得看 https://github.com/glzjin/shadowsocks/wiki/重大更新日志 添加配置项。
 ###报错?
 ````
-yum -y install gpg
+pip install ordereddict
+pip install gnupg
 ````
 
 id //用户id数据库字段说明:
