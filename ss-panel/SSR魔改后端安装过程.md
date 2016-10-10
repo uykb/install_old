@@ -3,6 +3,7 @@
 yum -y install python-setuptools && easy_install pip
 yum -y install git wget
 pip install cymysql speedtest-cli
+#easy_install speedtest-cli
 git clone -b manyuser https://github.com/glzjin/shadowsocks.git
 cd shadowsocks
 cp apiconfig.py userapiconfig.py
