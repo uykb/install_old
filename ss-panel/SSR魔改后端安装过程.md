@@ -15,7 +15,7 @@ https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup
 ````
 yum -y groupinstall "Development Tools"
 cd /root
-wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz
+wget --no-check-certificate https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz
 tar xf libsodium-1.0.11.tar.gz && cd libsodium-1.0.11
 ./configure && make -j2 && make install
 echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
