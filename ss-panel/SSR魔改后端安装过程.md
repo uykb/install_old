@@ -28,6 +28,59 @@ cd /root
 ````
 # Config
 
+#节点ID-和你网站添加的节点分配的ID一致!
+NODE_ID = 1
+
+# Mysql 数据库连接信息
+MYSQL_HOST = '127.0.0.1'
+MYSQL_PORT = 3306
+MYSQL_USER = 'ss'
+MYSQL_PASS = 'ss'
+MYSQL_DB = 'shadowsocks'
+MYSQL_UPDATE_TIME = 60
+````
+###特殊节点需要替换文件-我自用的.你们看懂了可以选用.没看懂的请勿使用!!!!
+````
+rm -rf /root/shadowsocks/*.pyc
+wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/switchrulev3.py -O /root/shadowsocks/switchrule.py
+````
+###安装守护进程 supervisord
+````
+easy_install supervisor
+````
+````
+wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/supervisordv3.conf -O /etc/supervisord.conf
+wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/supervisord/master/supervisord -O /etc/init.d/supervisord
+wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/limits.conf -O /etc/security/limits.conf
+````
+````
+chmod 755 /etc/init.d/supervisord
+chkconfig supervisord on
+service supervisord start
+````
+### 测速
+````
+speedtest-cli
+````
+### 关闭关闭开启防火墙 关闭开启防火墙防火墙
+````
+chkconfig iptables off
+service iptables stop
+
+1) 重启后生效 
+开启： chkconfig iptables on 
+关闭： chkconfig iptables off 
+
+2) 即时生效，重启后失效 
+开启： service iptables start 
+关闭： service iptables stop 
+````
+###安装完毕,以下为参考
+
+###userapiconfig.py ,解释下里面各项配置的意思
+````
+# Config
+
 #节点ID
 NODE_ID = 1
 
@@ -72,56 +125,6 @@ MYSQL_SSL_CERT = '/root/shadowsocks/client-cert.pem'
 MYSQL_SSL_KEY = '/root/shadowsocks/client-key.pem'
 MYSQL_SSL_CA = '/root/shadowsocks/ca.pem'
 
-# API，不用管
-API_HOST = '127.0.0.1'
-API_PORT = 80
-API_PATH = '/mu/v2/'
-API_TOKEN = 'abcdef'
-API_UPDATE_TIME = 60
-
-# Manager 不用管
-MANAGE_PASS = 'ss233333333'
-#if you want manage in other server you should set this value to global ip
-MANAGE_BIND_IP = '127.0.0.1'
-#make sure this port is idle
-MANAGE_PORT = 23333
-````
-###特殊节点需要替换文件-我自用的.你们看懂了可以选用.没看懂的请勿使用!!!!
-````
-rm -rf /root/shadowsocks/*.pyc
-wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/switchrulev3.py -O /root/shadowsocks/switchrule.py
-````
-###安装守护进程 supervisord
-````
-easy_install supervisor
-````
-````
-wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/ss-panel/supervisordv3.conf -O /etc/supervisord.conf
-wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/supervisord/master/supervisord -O /etc/init.d/supervisord
-wget --no-check-certificate https://raw.githubusercontent.com/wxliuxh/shadowsocks_install/master/limits.conf -O /etc/security/limits.conf
-````
-````
-chmod 755 /etc/init.d/supervisord
-chkconfig supervisord on
-service supervisord start
-````
-### 测速
-````
-speedtest-cli
-````
-### 关闭关闭开启防火墙 关闭开启防火墙防火墙
-````
-chkconfig iptables off
-service iptables stop
-
-1) 重启后生效 
-开启： chkconfig iptables on 
-关闭： chkconfig iptables off 
-
-2) 即时生效，重启后失效 
-开启： service iptables start 
-关闭： service iptables stop 
-````
 ###出现(1042, u"Can't get hostname for your address")错误
 ````
 my.cnf里,[mysqld]项目下
