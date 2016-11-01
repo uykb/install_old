@@ -26,8 +26,6 @@ cd /root
 ````
 ###然后主要编辑 userapiconfig.py ,只需要修改以下2个大类
 ````
-# Config
-
 #节点ID-和你网站添加的节点分配的ID一致!
 NODE_ID = 1
 
