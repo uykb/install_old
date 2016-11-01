@@ -13,7 +13,7 @@ cp apiconfig.py userapiconfig.py
 cp config.json user-config.json
 ````
 ###如果要使用 salsa20 或 chacha20 或 chacha20-ietf 算法，请安装 libsodium :
-https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup
+参考 https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup
 ````
 yum -y groupinstall "Development Tools"
 cd /root
