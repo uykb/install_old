@@ -6,8 +6,6 @@ pip install cymysql speedtest-cli
 rm -f /etc/localtime
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ntpdate time.nist.gov
-#easy_install speedtest-cli
-#pip install git+https://github.com/sivel/speedtest-cli.git
 git clone -b manyuser https://github.com/glzjin/shadowsocks.git
 cd shadowsocks
 cp apiconfig.py userapiconfig.py
