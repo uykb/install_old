@@ -1,4 +1,5 @@
-#Centos 6
+#Centos 6 系统,X86 X64均可
+###安装基本组件和SSR后端
 ````
 yum -y install python-setuptools && easy_install pip
 yum -y install git wget ntp
