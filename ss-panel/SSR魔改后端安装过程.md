@@ -24,7 +24,7 @@ ldconfig
 rm -rf /root/libsodium-1.0.11.tar.gz
 cd /root
 ````
-###然后主要编辑 userapiconfig.py ,来解释下里面各项配置的意思
+###然后主要编辑 userapiconfig.py ,只需要修改以下2个大类
 ````
 # Config
 
