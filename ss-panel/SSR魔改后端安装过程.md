@@ -171,5 +171,6 @@ last_rest_pass_time //保留字段
 ````
 ````
 echo 'killall python server.py;rm -rf /root/shadowsocks/*.pyc;cd /root/shadowsocks;python server.py &' >> /etc/rc.local
+
 cat /etc/rc.local
 ````
