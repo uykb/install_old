@@ -61,11 +61,13 @@ service supervisord start
 ````
 speedtest-cli
 ````
-### 关闭关闭开启防火墙 关闭开启防火墙防火墙
+### 关闭防火墙
 ````
 chkconfig iptables off
 service iptables stop
-
+````
+### 防火墙
+````
 1) 重启后生效 
 开启： chkconfig iptables on 
 关闭： chkconfig iptables off 
