@@ -66,6 +66,10 @@ speedtest-cli
 chkconfig iptables off
 service iptables stop
 ````
+
+###安装完毕,以下为参考
+
+
 ### 防火墙
 ````
 1) 重启后生效 
@@ -76,7 +80,7 @@ service iptables stop
 开启： service iptables start 
 关闭： service iptables stop 
 ````
-###安装完毕,以下为参考
+
 
 ###userapiconfig.py ,解释下里面各项配置的意思
 ````
