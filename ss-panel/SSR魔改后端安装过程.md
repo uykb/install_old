@@ -12,6 +12,17 @@ cd shadowsocks
 cp apiconfig.py userapiconfig.py
 cp config.json user-config.json
 ````
+# http api依赖库
+````
+yum -y groupinstall "Development Tools"
+yum -y install python-devel
+yum -y install libffi-devel
+pip install pyOpenSSL
+pip install ndg-httpsclient
+pip install pyasn1
+
+pip install -r requirements.txt
+````
 ###如果要使用 salsa20 或 chacha20 或 chacha20-ietf 算法，请安装 libsodium :
 参考 https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup
 ````
