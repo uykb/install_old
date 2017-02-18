@@ -125,8 +125,8 @@ function install(){
     exit 0
 }
 
-# Install Shadowsocks-libev
-function install_shadowsocks_libev(){
+# Install shadowsocksR
+function config_shadowsocksR(){
     rootness
     pre_install
     config_userapiconfig
@@ -138,7 +138,7 @@ action=$1
 [ -z $1 ] && action=add
 case "$action" in
 add)
-    install_shadowsocks_libev
+    config_shadowsocksR
     ;;
 *)
     echo "参数错误! [${action} ]"
